@@ -10,8 +10,8 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var objects = [AnyObject]()
-
+    //Each dictionary holding a string for its key and another string for its value
+    var objects = [[String: String]]()
 
     override func awakeFromNib() {
         super.awakeFromNib()
