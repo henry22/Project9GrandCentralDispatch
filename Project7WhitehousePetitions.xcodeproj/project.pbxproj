@@ -79,12 +79,9 @@
 		BA1818B41B0A2051006F197A /* Project7WhitehousePetitions */ = {
 			isa = PBXGroup;
 			children = (
-				BA1818B71B0A2051006F197A /* AppDelegate.swift */,
 				BA1818B91B0A2051006F197A /* MasterViewController.swift */,
 				BA1818BB1B0A2051006F197A /* DetailViewController.swift */,
 				BA1818BD1B0A2051006F197A /* Main.storyboard */,
-				BA1818C01B0A2051006F197A /* Images.xcassets */,
-				BA1818C21B0A2051006F197A /* LaunchScreen.xib */,
 				BA1818B51B0A2051006F197A /* Supporting Files */,
 			);
 			path = Project7WhitehousePetitions;
@@ -93,6 +90,9 @@
 		BA1818B51B0A2051006F197A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BA1818B71B0A2051006F197A /* AppDelegate.swift */,
+				BA1818C01B0A2051006F197A /* Images.xcassets */,
+				BA1818C21B0A2051006F197A /* LaunchScreen.xib */,
 				BA1818B61B0A2051006F197A /* Info.plist */,
 			);
 			name = "Supporting Files";
