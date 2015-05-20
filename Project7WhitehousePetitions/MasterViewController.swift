@@ -25,11 +25,11 @@ class MasterViewController: UITableViewController {
         
         if let url = NSURL(string: urlString) {
             //Returns the content from an NSURL
-            if let data = NSData(contentsOfURL: url, options: NSDataReadingOptions.allZeros, error: nil) {
+            if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) {
                 //Create a new JSON object from it, it's a SwiftyJSON structure
                 let json = JSON(data: data)
                 
-                if json["metadata"]["responseInfo"]["status"] == 200 {
+                if json["metadata"]["responseInfo"]["status"].intValue == 200 {
                     parseJSON(json)
                 }
             }
@@ -39,15 +39,16 @@ class MasterViewController: UITableViewController {
     func parseJSON(json: JSON) {
         for result in json["results"].arrayValue {
             //Accessing an item in our result value using stringValue, we will either get its value back or an empty string
-            let title = json["title"].stringValue
-            let body = json["body"].stringValue
+            let title = result["title"].stringValue
+            let body = result["body"].stringValue
             //Signature count is actually a number in the JSON, but SwiftyJSON converts it to put inside our dictionary where all the keys and values are strings
-            let signatureCount = json["signatrueCount"].stringValue
-            let object = ["title": title, "body": body, "signatureCount": signatureCount]
-            
+            let signatureCount = result["signatrueCount"].stringValue
+            let dict = ["title": title, "body": body, "signatureCount": signatureCount]
             //Place the new dictionary into the array
-            objects.append(object)
+            objects.append(dict)
         }
+
+        
         //Once all the results have been parsed, we tell the table view to reload
         tableView.reloadData()
     }
@@ -83,7 +84,8 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 
         let object = objects[indexPath.row]
-        cell.textLabel!.text = object.description
+        cell.textLabel!.text = object["title"]
+        cell.detailTextLabel!.text = object["body"]
         return cell
     }
 

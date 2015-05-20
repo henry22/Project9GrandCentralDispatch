@@ -14,7 +14,7 @@
 		BA1818C11B0A2051006F197A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1818C01B0A2051006F197A /* Images.xcassets */; };
 		BA1818C41B0A2051006F197A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA1818C21B0A2051006F197A /* LaunchScreen.xib */; };
 		BA1818D01B0A2051006F197A /* Project7WhitehousePetitionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1818CF1B0A2051006F197A /* Project7WhitehousePetitionsTests.swift */; };
-		BA1818E21B0A41B2006F197A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1818E11B0A41B2006F197A /* SwiftyJSON.swift */; };
+		BAAC4E771B0C5982004CB0B1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAC4E761B0C5982004CB0B1 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,7 @@
 		BA1818C91B0A2051006F197A /* Project7WhitehousePetitionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project7WhitehousePetitionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1818CE1B0A2051006F197A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA1818CF1B0A2051006F197A /* Project7WhitehousePetitionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project7WhitehousePetitionsTests.swift; sourceTree = "<group>"; };
-		BA1818E11B0A41B2006F197A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		BAAC4E761B0C5982004CB0B1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 				BA1818B91B0A2051006F197A /* MasterViewController.swift */,
 				BA1818BB1B0A2051006F197A /* DetailViewController.swift */,
 				BA1818BD1B0A2051006F197A /* Main.storyboard */,
-				BA1818E11B0A41B2006F197A /* SwiftyJSON.swift */,
+				BAAC4E761B0C5982004CB0B1 /* SwiftyJSON.swift */,
 				BA1818B51B0A2051006F197A /* Supporting Files */,
 			);
 			path = Project7WhitehousePetitions;
@@ -221,7 +221,7 @@
 				BA1818BC1B0A2051006F197A /* DetailViewController.swift in Sources */,
 				BA1818BA1B0A2051006F197A /* MasterViewController.swift in Sources */,
 				BA1818B81B0A2051006F197A /* AppDelegate.swift in Sources */,
-				BA1818E21B0A41B2006F197A /* SwiftyJSON.swift in Sources */,
+				BAAC4E771B0C5982004CB0B1 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +417,7 @@
 				BA1818D51B0A2051006F197A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA1818D61B0A2051006F197A /* Build configuration list for PBXNativeTarget "Project7WhitehousePetitionsTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +426,7 @@
 				BA1818D81B0A2051006F197A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
