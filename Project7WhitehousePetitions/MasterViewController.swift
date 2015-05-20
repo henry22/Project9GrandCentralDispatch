@@ -38,8 +38,14 @@ class MasterViewController: UITableViewController {
                 
                 if json["metadata"]["responseInfo"]["status"].intValue == 200 {
                     parseJSON(json)
+                } else {
+                    showError()
                 }
+            } else {
+                showError()
             }
+        } else {
+            showError()
         }
     }
     
@@ -58,6 +64,12 @@ class MasterViewController: UITableViewController {
         
         //Once all the results have been parsed, we tell the table view to reload
         tableView.reloadData()
+    }
+    
+    func showError() {
+        let alertController = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
