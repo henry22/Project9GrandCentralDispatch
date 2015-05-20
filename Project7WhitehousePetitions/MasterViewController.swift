@@ -30,10 +30,26 @@ class MasterViewController: UITableViewController {
                 let json = JSON(data: data)
                 
                 if json["metadata"]["responseInfo"]["status"] == 200 {
-                    //Ok to parse
+                    parseJSON(json)
                 }
             }
         }
+    }
+    
+    func parseJSON(json: JSON) {
+        for result in json["results"].arrayValue {
+            //Accessing an item in our result value using stringValue, we will either get its value back or an empty string
+            let title = json["title"].stringValue
+            let body = json["body"].stringValue
+            //Signature count is actually a number in the JSON, but SwiftyJSON converts it to put inside our dictionary where all the keys and values are strings
+            let signatureCount = json["signatrueCount"].stringValue
+            let object = ["title": title, "body": body, "signatureCount": signatureCount]
+            
+            //Place the new dictionary into the array
+            objects.append(object)
+        }
+        //Once all the results have been parsed, we tell the table view to reload
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
