@@ -20,8 +20,15 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Points to the Whitehouse.gov server, accessing the petitions system
-        var urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
+        var urlString: String
+        
+        //both tabs contain a MasterViewController, which means the same code is executed
+        if navigationController?.tabBarItem.tag == 0 {
+            //Points to the Whitehouse.gov server, accessing the petitions system
+            urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
+        } else {
+            urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
+        }
         
         if let url = NSURL(string: urlString) {
             //Returns the content from an NSURL
