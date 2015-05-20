@@ -16,6 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //This window needs to know what its initial view controller is, and that gets set to its rootViewController property
+        var tabBarController = window?.rootViewController as! UITabBarController
+        //We need to create a new MasterViewController by hand, which means getting a reference to our Main.storyboard file
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //We create our view controller, passing in the storyboard ID of the view controller we want, and typecast the result to be a UINavigationController
+        var viewController = storyboard.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
+        //We create a new UITabBarItem object for the new view controller, giving it the "Top Rated" icon and the tag 1
+        viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .TopRated, tag: 1)
+        //We add the new view controller to our tab bar controller's viewControllers array, which will cause it to appear in the tab bar
+        tabBarController.viewControllers?.append(viewController)
+        
         return true
     }
 
