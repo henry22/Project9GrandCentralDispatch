@@ -20,7 +20,20 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Points to the Whitehouse.gov server, accessing the petitions system
+        var urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
         
+        if let url = NSURL(string: urlString) {
+            //Returns the content from an NSURL
+            if let data = NSData(contentsOfURL: url, options: NSDataReadingOptions.allZeros, error: nil) {
+                //Create a new JSON object from it, it's a SwiftyJSON structure
+                let json = JSON(data: data)
+                
+                if json["metadata"]["responseInfo"]["status"] == 200 {
+                    //Ok to parse
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
