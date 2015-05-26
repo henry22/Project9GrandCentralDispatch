@@ -30,7 +30,7 @@ class MasterViewController: UITableViewController {
             urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
         }
         
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { [unowned self] in
             if let url = NSURL(string: urlString) {
                 //Returns the content from an NSURL
                 if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) {
@@ -62,16 +62,22 @@ class MasterViewController: UITableViewController {
             //Place the new dictionary into the array
             objects.append(dict)
         }
-
         
-        //Once all the results have been parsed, we tell the table view to reload
-        tableView.reloadData()
+        //[unowned self] in and self. to keep away strong reference cycles
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            //Once all the results have been parsed, we tell the table view to reload
+            self.tableView.reloadData()
+        }
+
     }
     
     func showError() {
-        let alertController = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-        presentViewController(alertController, animated: true, completion: nil)
+        //[unowned self] in and self. to keep away strong reference cycles
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            let alertController = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
