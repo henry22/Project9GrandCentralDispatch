@@ -30,22 +30,24 @@ class MasterViewController: UITableViewController {
             urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
         }
         
-        if let url = NSURL(string: urlString) {
-            //Returns the content from an NSURL
-            if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) {
-                //Create a new JSON object from it, it's a SwiftyJSON structure
-                let json = JSON(data: data)
-                
-                if json["metadata"]["responseInfo"]["status"].intValue == 200 {
-                    parseJSON(json)
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
+            if let url = NSURL(string: urlString) {
+                //Returns the content from an NSURL
+                if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) {
+                    //Create a new JSON object from it, it's a SwiftyJSON structure
+                    let json = JSON(data: data)
+                    
+                    if json["metadata"]["responseInfo"]["status"].intValue == 200 {
+                        self.parseJSON(json)
+                    } else {
+                        self.showError()
+                    }
                 } else {
-                    showError()
+                    self.showError()
                 }
             } else {
-                showError()
+                self.showError()
             }
-        } else {
-            showError()
         }
     }
     
